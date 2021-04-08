@@ -194,7 +194,10 @@ A component calling `useContext` will always re-render when the context value ch
 
 >Tip
 >
->If you're familiar with the context API before Hooks, `useContext(MyContext)` is equivalent to `static contextType = MyContext` in a class, or to `<MyContext.Consumer>`.
+>If you're familiar with the context API before Hooks, `useContext(MyContext)`
+
+
+`static contextType = MyContext` in a class, or to `<MyContext.Consumer>`.
 >
 >`useContext(MyContext)` only lets you *read* the context and subscribe to its changes. You still need a `<MyContext.Provider>` above in the tree to *provide* the value for this context.
 
@@ -364,7 +367,7 @@ Returns a [memoized](https://en.wikipedia.org/wiki/Memoization) callback.
 
 Pass an inline callback and an array of dependencies. `useCallback` will return a memoized version of the callback that only changes if one of the dependencies has changed. This is useful when passing callbacks to optimized child components that rely on reference equality to prevent unnecessary renders (e.g. `shouldComponentUpdate`).
 
-`useCallback(fn, deps)` is equivalent to `useMemo(() => fn, deps)`.
+`useCallback(fn, deps)` is equivalent to `useMemo(() => fn(), deps)`.
 
 > Note
 >
